@@ -1,4 +1,12 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var reversePairs = function(nums) {
+return mergeSort(nums)
+};
 function mergeSort(nums) {
+  let count = 0
   const newNums = new Array(nums.length)
   sort(nums, 0, nums.length - 1)
 
@@ -15,6 +23,15 @@ function mergeSort(nums) {
   function merge(nums, left, mid, right) {
     for (let i = left; i <= right; i++) {
       newNums[i] = nums[i]
+    }
+    console.log(nums, left, mid, right)
+    let rightStart = mid + 1
+    for (let i = left; i <=mid ; i++) {
+      console.log(nums[i], nums[rightStart])
+      while (rightStart<=right && nums[i] > nums[rightStart] * 2) {
+        count += mid - i + 1
+        rightStart++
+      }
     }
     let k = right
     let m = mid
@@ -37,9 +54,7 @@ function mergeSort(nums) {
       k--
     }
   }
+  return count
 }
 
-
-const nums = [14, 1, 15, 13, 11, 16]
-mergeSort(nums)
-console.log(nums)
+console.log(reversePairs([2,4,3,5,1]))
