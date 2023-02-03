@@ -1,3 +1,4 @@
+const {createArr} = require("../help/createArr")
 function mergeSort(nums) {
   const newNums = new Array(nums.length)
   sort(nums, 0, nums.length - 1)
@@ -40,6 +41,7 @@ function mergeSort(nums) {
 }
 
 
-const nums = [14, 1, 15, 13, 11, 16]
+const nums = createArr(100000)
+console.time("mergeSort")
 mergeSort(nums)
-console.log(nums)
+console.timeEnd("mergeSort")
