@@ -1,4 +1,4 @@
-const {createArr} = require("../help/createArr");
+const {createArr} = require("../../help/createArr");
 
 function countSort(nums) {
   const n = nums.length
@@ -19,7 +19,6 @@ function countSort(nums) {
       arr[i] -= 1
     }
   }
-  console.log(nums)
 }
 const nums = createArr(100000)
 console.time("quickSort")

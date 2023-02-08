@@ -1,4 +1,4 @@
-const {createArr} = require("../help/createArr")
+const {createArr} = require("../../help/createArr")
 function quickSort(nums) {
   if (nums.length === 0 || nums.length === 1) {
     return nums
@@ -25,9 +25,6 @@ function partition(nums, left, right) {
   swap(nums, left, j)
   return j
 }
-
-// [4,1,2,3,6,5]
-// [2,1,3,4,6,5]
 function sort(nums, left, right) {
   if (left >= right) {
     return

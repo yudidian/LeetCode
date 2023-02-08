@@ -1,4 +1,4 @@
-const {createArr} = require("../help/createArr")
+const {createArr} = require("../../help/createArr")
 function mergeSort(nums) {
   const newNums = new Array(nums.length)
   sort(nums, 0, nums.length - 1)

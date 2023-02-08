@@ -1,4 +1,4 @@
-const {createArr} = require("../help/createArr")
+const {createArr} = require("../../help/createArr")
 const nums = createArr(100000)
 console.log(nums)
 function bubbleSort(nums) {

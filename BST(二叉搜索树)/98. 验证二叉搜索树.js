@@ -8,7 +8,7 @@ function TreeNode(val, left, right) {
  * @return {boolean}
  */
 var isValidBST = function(root) {
-  return verified(root, new TreeNode(), new TreeNode())
+  return verified(root, null, null)
 };
 function verified(root, min, max) {
   if (root === null) {

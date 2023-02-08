@@ -107,7 +107,7 @@ class Heap {
 
 // 二叉树左侧节点表达式 index * 2 + 1
 // 二叉树右侧节点表达式 index * 2 + 2
-const heap = new Heap([5221, 11, 821, 42, 15, 221, 321, 1112, 777,999])
+const heap = new Heap([21, 11, 1, 42, 15, 321, 12, 77,99])
 heap.rebuildHeap()
 heap.insert(15)
 console.log(heap.data)
