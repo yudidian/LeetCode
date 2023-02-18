@@ -41,7 +41,7 @@ function mergeSort(nums) {
 }
 
 
-const nums = createArr(100000)
+const nums = createArr(10)
 console.time("mergeSort")
 mergeSort(nums)
 console.timeEnd("mergeSort")
