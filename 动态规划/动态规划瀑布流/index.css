@@ -1,0 +1,17 @@
+
+#waterfall {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#waterfall img {
+    width: 98%;
+    position: relative;
+}
+li {
+    position: absolute;
+    width: 300px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    list-style: none;
+}

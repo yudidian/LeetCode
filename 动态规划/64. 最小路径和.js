@@ -3,28 +3,30 @@
  * @return {number}
  */
 var minPathSum = function (grid) {
-  let sum = 0
+  const map = new Array(grid.length).fill(-1).map(item => {
+    item = []
+    for (let i = 0; i < grid.length; i++) {
+      item.push(false)
+    }
+    return item
+  })
+  return dp(grid.length - 1, grid[0].length - 1, grid)
 
-  dp(0, 0, grid)
-  console.log(sum)
   function dp(i, j, grid) {
-    console.log(sum, i, j)
-    if (i === grid.length - 1 && j === grid[0].length -1) {
-      console.log(sum + grid[i][j])
-      return sum + grid[i][j]
+    // 确定基本情况
+    if (i === 0 && j === 0) {
+      return grid[i][j]
     }
-    if (i < grid.length -1 && j < grid[0].length - 1) {
-      console.log(grid[i][j])
-      sum += Math.min(dp(i + 1, j, grid) + grid[i][j], dp(i, j + 1, grid) + grid[i][j])
-
-    } else if (i === grid.length -1 && j < grid[0].length) {
-      sum += dp(i, j + 1, grid) + grid[i][j]
-    } else if (i < grid.length && j === grid[0].length -1) {
-      sum += dp(i + 1, j, grid) + grid[i][j]
+    if (i < 0 || j < 0) {
+      return 9999999
     }
-
+    if (map[i][j]) {
+      return map[i][j]
+    }
+    map[i][j] = Math.min(dp(i - 1, j, grid), dp(i, j - 1, grid)) + grid[i][j]
+    return map[i][j]
   }
 };
 // 输入：grid = [[1,3,1],[1,5,1],[4,2,1]]
 // 输出：7
-minPathSum([[1,3,1]])
+console.log(minPathSum([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))

@@ -4,8 +4,25 @@
  * @return {number}
  */
 var findTargetSumWays = function (nums, target) {
-  function dp() {
+  let count = 0
+  let sum = 0
+  backtrack(nums, 0, sum)
+  return count
 
+  function backtrack(nums, index, sum) {
+    if (index === nums.length) {
+      if (sum === target) {
+        count++
+      }
+      return
+    }
+    sum += nums[index]
+    backtrack(nums, index + 1, sum)
+    sum -= nums[index]
+
+    sum -= nums[index]
+    backtrack(nums, index + 1, sum)
+    sum += nums[index]
   }
 };
 // 输入：nums = [1,1,1,1,1], target = 3

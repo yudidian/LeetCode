@@ -17,8 +17,7 @@ var solveNQueens = function (n) {
 
   function backtrack(n, used, stack) {
     if (stack.length === n) {
-      console.log(stack)
-      res.push(stack)
+      res.push([...stack])
       return
     }
     for (let i = 0; i < n; i++) {
@@ -26,8 +25,8 @@ var solveNQueens = function (n) {
         if (isTrue(used, i, j)) {
           continue
         }
-        stack.push(`${i}+${j}`)
         console.log(stack)
+        stack.push(`${i}+${j}`)
         setFlag(used, true, i, j)
         backtrack(n, used, stack)
         setFlag(used, false, i, j)
@@ -38,29 +37,47 @@ var solveNQueens = function (n) {
 };
 
 function isTrue(used, i, j) {
-  console.log(i,j)
-  for (let k = j; k < used.length; k++) {
+  // 只需检查行和列
+  for (let k = 0; k < used.length; k++) {
+    if (used[i][k] === true) {
+      return true
+    }
+  }
+  for (let k = 0; k < used.length; k++) {
     if (used[k][j] === true) {
       return true
     }
   }
-  for (let k = i; k < used.length; k++) {
-    if (used[i][k] === true) {
+  for (let k = 0; k < used.length; k++) {
+    if (used[k][k] === true) {
       return true
     }
-
+  }
+  for (let k = i, r = j; k < used.length && r < used.length; k++, r++) {
+    if (used[k][r] === true) {
+      return true
+    }
+  }
+  for (let k = i, r = j; k >= 0 && r >= 0; k--, r--) {
+    if (used[k][r] === true) {
+      return true
+    }
+  }
+  for (let k = i, r = j; k < used.length && r >= 0; k++, r--) {
+    if (used[k][r] === true) {
+      return true
+    }
+  }
+  for (let k = i, r = j; k >= 0 && r < used.length; k--, r++) {
+    if (used[k][r] === true) {
+      return true
+    }
   }
   return false
 }
 
 function setFlag(used, flag, i, j) {
-  for (let k = 0; k < used.length; k++) {
-    used[i][k] = flag
-  }
-  for (let k = 0; k < used.length; k++) {
-    used[k][j] = flag
-
-  }
+  used[i][j] = flag
 }
 
 // 输入：n = 4
